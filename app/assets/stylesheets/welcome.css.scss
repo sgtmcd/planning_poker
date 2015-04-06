@@ -1,0 +1,44 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.vote {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 36px;
+  height: 40px;
+  margin: 5px;
+  float: left;
+  text-align: center;
+  padding-top: 30px;
+  &:hover {
+    border: 1px dashed yellow;
+    cursor: pointer;
+  }
+}
+
+.votes {
+  display: block;
+  height: 80px;
+  .voted, .vote{
+    float: left;
+    width: auto !important;
+    padding-left: 3px;
+    padding-right: 3px;
+    &:hover{}
+
+  }
+}
+
+.green {
+  background: #55dd55;
+}
+
+.red {
+  background: #dd5555;
+}
+
+.clear {
+  clear: both;
+}

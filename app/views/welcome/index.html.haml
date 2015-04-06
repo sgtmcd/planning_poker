@@ -1,0 +1,31 @@
+%h1
+  Welcome #{params[:n]}
+
+:javascript
+  developer_name = '#{params[:n]}'
+  console.log(developer_name)
+
+%a(href='/welcome/new_round')
+  New Round?
+
+.votes
+  - votes = Hash.new {|h,k| h[k] = []}
+  - Developer.pluck(:name, :vote).each do |v|
+    - votes[v[1]] << v[0] 
+  - votes.each do |k,v|
+    .voted.vote
+      = k
+      %br
+      = v.join(', ')
+
+
+
+.clear
+%hr
+- if params[:n]
+  = form_tag do
+    %p 
+      - [0,1,2,3,5,8,13,21,34,55,89,144].each do |n|
+        .vote.votable(id="vote_#{n}" class="#{n <= 13 ? 'green' : 'green'}") #{n}
+
+
