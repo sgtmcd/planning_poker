@@ -1,6 +1,6 @@
 PlanningPoker::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  ENV["REDISTOGO_URL"] =  'redis://redistogo:1584cd3be2bf39a6e9310cd5de5e5be8@grouper.redistogo.com:10625/'
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.gem 'redis'
