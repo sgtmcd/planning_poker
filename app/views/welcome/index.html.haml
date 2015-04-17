@@ -1,31 +1,21 @@
-%h1
-  Welcome #{params[:n]}
-
 :javascript
-  developer_name = '#{params[:n]}'
-  console.log(developer_name)
+  document.cookie = "name=" + #{cookies[:name].inspect}
 
-%a(href='/welcome/new_round')
-  New Round?
+%h1
+  Planning Poker
 
-.votes
-  - votes = Hash.new {|h,k| h[k] = []}
-  - Developer.pluck(:name, :vote).each do |v|
-    - votes[v[1]] << v[0] 
-  - votes.each do |k,v|
-    .voted.vote
-      = k
-      %br
-      = v.join(', ')
+%label Name:
+%input#voter_name(type='text' )
 
-
+%hr
+%h3
+  Votes
+.votes(style='text-align: center;')
 
 .clear
 %hr
-- if params[:n]
-  = form_tag do
-    %p 
-      - [0,1,2,3,5,8,13,21,34,55,89,144].each do |n|
-        .vote.votable(id="vote_#{n}" class="#{n <= 13 ? 'green' : 'green'}") #{n}
+%p 
+  - [0,1,2,3,5,8,13,21,34,55,89,144].each do |n|
+    .vote.votable(id="vote_#{n}" class="#{n <= 13 ? 'green' : 'green'}") #{n}
 
 
