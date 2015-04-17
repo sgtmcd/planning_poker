@@ -1,5 +1,6 @@
 :javascript
-  document.cookie = "name=" + #{cookies[:name].inspect}
+  - if cookies[:name]
+    document.cookie = "name=" + #{cookies[:name].inspect}
 
 %h1
   Planning Poker
