@@ -1,6 +1,5 @@
 :javascript
-  - if cookies[:name]
-    document.cookie = "name=" + #{cookies[:name].inspect}
+  document.cookie = "name=" + #{cookies[:name].inspect || 'name???'}
 
 %h1
   Planning Poker
