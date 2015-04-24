@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
 
   respond_to :json, only: [:vote]
   def index
+    @foo = ENV["REDISTOGO_URL"]
   end
 
   def new_round
