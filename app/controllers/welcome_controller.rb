@@ -41,6 +41,6 @@ class WelcomeController < ApplicationController
   def redis
     ENV["REDISTOGO_URL"] ||= "redis://localhost:6379/"
     uri = URI.parse(ENV["REDISTOGO_URL"])
-    Redis.new(:host => uri.host, :port => uri.port, :thread_safe => true)
+    Redis.new(host: uri.host, port: uri.port, password: uri.password, username: uri.username, thread_safe: true)
   end
 end
