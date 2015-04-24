@@ -1,3 +1,4 @@
+
 class WelcomeController < ApplicationController
   include Tubesock::Hijack
 
@@ -16,7 +17,7 @@ class WelcomeController < ApplicationController
       redis_thread = Thread.new do
         # Needs its own redis connection to pub
         # and sub at the same time
-        Redis.new.subscribe "chat" do |on|
+        redis.subscribe "vote" do |on|
           on.message do |channel, message|
             tubesock.send_data message
           end
@@ -26,7 +27,7 @@ class WelcomeController < ApplicationController
       tubesock.onmessage do |m|
         # pub the message when we get one
         # note: this echoes through the sub above
-        Redis.new.publish "chat", m
+        redis.publish "vote", m
       end
       
       tubesock.onclose do
@@ -34,5 +35,11 @@ class WelcomeController < ApplicationController
         redis_thread.kill
       end
     end
+  end
+  private
+  def redis
+    ENV["REDISTOGO_URL"] ||= "redis://localhost:6379/"
+    uri = URI.parse(ENV["REDISTOGO_URL"])
+    Redis.new(:host => uri.host, :port => uri.port, :thread_safe => true)
   end
 end
