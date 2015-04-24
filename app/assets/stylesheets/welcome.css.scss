@@ -2,13 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  font-size: 30px;
+}
 
+h1 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 30px;
+}
+input {
+  font-size: 25px;
+}
 .vote {
   border: 1px solid black;
   border-radius: 5px;
-  width: 36px;
-  height: 40px;
+  width: 15%;
+  height: 120px;
   margin: 5px;
+  font-size: 50px;
   float: left;
   text-align: center;
   padding-top: 30px;
@@ -20,10 +33,11 @@
 
 .votes {
   display: block;
-  height: 80px;
+  min-height: 140px;
   .voted, .vote{
     float: left;
-    width: auto !important;
+    font-size: 30px;
+    /*width: auto !important;*/
     padding-left: 3px;
     padding-right: 3px;
     &:hover{}

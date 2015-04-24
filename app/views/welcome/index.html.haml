@@ -12,8 +12,10 @@
 .clear
 %hr
 %p 
-  - [0,1,2,3,5,8,13,21,34,55,89,144].each do |n|
+  - [0,1,2,3,5,8,13,21,34,55,89,144].each_with_index do |n, i|
     .vote.votable(id="vote_#{n}" class="#{n <= 13 ? 'green' : 'green'}") #{n}
+    - if i == 5
+      .clear
 
 .clear
 %hr
